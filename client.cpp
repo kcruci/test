@@ -1,6 +1,3 @@
-// Copyright (C) 2015  .
-// Author: davidluan
-// CreateTime: 2015-02-11
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
