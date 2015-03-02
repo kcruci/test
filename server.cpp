@@ -84,6 +84,31 @@ int ReadSelect(int maxfd , fd_set* fdset)
     return iRet;
 }
 
+void do_fd(int fd)
+{
+    int iConnectFd = fd;
+    printf("process new data iConnectFd:%d\n",iConnectFd);
+
+    memset(szRecvBuff, 0 , sizeof(szRecvBuff));
+
+    int len = recv(iConnectFd, szRecvBuff, sizeof(szRecvBuff),0);
+
+    printf("client data len:%d, value:%s\n", len, (char*)szRecvBuff);
+    //printf("server data is:%u\n", time(NULL));
+
+
+    char szBuff[1024];
+    memset(szBuff, 0 , sizeof(szBuff));
+
+    snprintf(szBuff, sizeof(szBuff),"%s world, time:%u", szRecvBuff, time(NULL));
+
+    len = send(iConnectFd, szBuff, sizeof(szBuff),0);
+    printf("server data len:%d, value::%s\n", len, (char*)szBuff);
+
+
+
+
+}
 int main_loop(int iListenSock)
 {
     fd_set readfds;
@@ -144,26 +169,9 @@ int main_loop(int iListenSock)
                     //process for the sock
                     else
                     {
-                        int iConnectFd = i;
-                        printf("process new data iConnectFd:%d\n",iConnectFd);
+                        do_fd(i);
 
-                        memset(szRecvBuff, 0 , sizeof(szRecvBuff));
-
-                        int len = recv(iConnectFd, szRecvBuff, sizeof(szRecvBuff),0);
-
-                        printf("client data len:%d, value:%s\n", len, (char*)szRecvBuff);
-                        //printf("server data is:%u\n", time(NULL));
-
-
-                        char szBuff[1024];
-                        memset(szBuff, 0 , sizeof(szBuff));
-
-                        snprintf(szBuff, sizeof(szBuff),"%s world, time:%u", szRecvBuff, time(NULL));
-
-                        len = send(iConnectFd, szBuff, sizeof(szBuff),0);
-                        printf("server data len:%d, value::%s\n", len, (char*)szBuff);
-
-    //                  close(iConnectFd);
+                          //                  close(iConnectFd);
      //                 FD_CLR(iConnectFd, &masterfds);
 
                         //modify the maxfd here!!
