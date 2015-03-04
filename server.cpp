@@ -27,6 +27,7 @@ int set_noblock(int iSock)
     fcntl(iSock, F_SETFL, iFlag);
 
     return 0;
+    return 0;
 
 }
 

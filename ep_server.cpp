@@ -12,6 +12,9 @@
 #include <stdlib.h>
 
 
+//###################/////////////////////
+#include <stdlib.h>
+//////////////////////
 
 #include <stdio.h>
 #include <sys/select.h>
@@ -30,6 +33,12 @@ int set_noblock(int iSock)
 
     return 0;
 
+}
+
+
+int do_none()
+{
+    return 0;
 }
 
 int init_server( char * sIp, unsigned short shPort)
