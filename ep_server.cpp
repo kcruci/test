@@ -32,6 +32,12 @@ int set_noblock(int iSock)
 
 }
 
+
+int do_none()
+{
+    return 0;
+}
+
 int init_server( char * sIp, unsigned short shPort)
 {
     int reuse =1 ;
