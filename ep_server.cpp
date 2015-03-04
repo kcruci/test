@@ -171,9 +171,19 @@ void main_loop(int listen_fd)
     }
 }
 
+void usage(const char * name)
+{
+    fprintf(stderr, "%s port\n", name);
+}
+
 
 int main(int argc, const char *argv[])
 {
+    if(argc < 2)
+    {
+        usage(argv[0]);
+        exit(-1);
+    }
     unsigned short shPort = atoi(argv[1]);
     int listen_fd = init_server("0.0.0.0", shPort);
     set_noblock(listen_fd);
