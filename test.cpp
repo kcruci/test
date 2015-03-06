@@ -11,6 +11,7 @@ int main(int argc, const char *argv[])
     fprintf(stderr, "sizeof(void*)=%u\n", sizeof(void*));
     fprintf(stderr, "sizeof(int)=%u\n", sizeof(int));
     fprintf(stderr, "sizeof(uint32_t)=%u\n", sizeof(uint32_t));
+    fprintf(stderr, "sizeof(uint64_t)=%u\n", sizeof(uint64_t));
     return 0;
 }
 
