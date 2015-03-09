@@ -21,12 +21,11 @@ int main(int argc, const char *argv[])
 
     exit(0);
     exit(1);
-    // return 0;
     exit(25);
-//    fprintf(stderr, "sizeof(uint64_t)=%u\n", sizeof(uint64_t));
 
     sleep(1);
     sleep(3);
+    sleep(2);
     return 0;
 }
 
