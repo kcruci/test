@@ -26,6 +26,7 @@ int main(int argc, const char *argv[])
 //    fprintf(stderr, "sizeof(uint64_t)=%u\n", sizeof(uint64_t));
 
     sleep(1);
+    sleep(3);
     return 0;
 }
 
