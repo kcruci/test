@@ -114,13 +114,25 @@ int main(int argc, const char *argv[])
 
     //traverse
 
-    ListHead* pCurr;
+    ListHead* pCurr, *pNext;
     LIST_FOR_EACH(pCurr, &(head.list))
     {
         list_msg_t* node = LIST_ENTRY(pCurr, list_msg_t, list);
         printf("uiSeq:%d, msg:%s\n", node->uiSeq, node->chMsg);
     }
 
+
+
+    //delete no safe
+    //LIST_FOR_EACH(pCurr, &(head.list))
+
+    //pNext is a temporary param;
+    LIST_FOR_EACH_SAFE(pCurr,pNext, &(head.list))
+    {
+        list_msg_t* node = LIST_ENTRY(pCurr, list_msg_t, list);
+        printf("del uiSeq:%d, msg:%s\n", node->uiSeq, node->chMsg);
+        LIST_DEL_INIT(pCurr);
+    }
 
 
 
