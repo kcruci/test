@@ -88,13 +88,39 @@ typedef struct _ListHead
 typedef struct
 {
     unsigned int uiSeq ;
+    char chMsg[100] ;
     ListHead list;
-    void * p;
-}test_data;
+}list_msg_t;
 
 
 int main(int argc, const char *argv[])
 {
+    list_msg_t head;
+    INIT_LIST_HEAD(&(head.list));
+
+    list_msg_t node[100];
+
+    for(int i=0;i<10;i++)
+    {
+        node[i].uiSeq = 1000 + i;
+        snprintf(node[i].chMsg, sizeof(node[i].chMsg), "%s%d", "hello, ", i);
+
+        INIT_LIST_HEAD(&(node[i].list));
+        LIST_ADD_TAIL(&(node[i].list), &(head.list));
+        //LIST_ADD(&(node[i].list), &(head.list));
+    }
+
+    printf("traverse!!!!!!!!!!!\n");
+
+    //traverse
+
+    ListHead* pCurr;
+    LIST_FOR_EACH(pCurr, &(head.list))
+    {
+        list_msg_t* node = LIST_ENTRY(pCurr, list_msg_t, list);
+        printf("uiSeq:%d, msg:%s\n", node->uiSeq, node->chMsg);
+    }
+
 
 
 
