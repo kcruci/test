@@ -55,6 +55,8 @@ Node * do_recursion(Node * node1, Node * node2)
 	}
 }
 
+//头插方法
+//
 Node * reverse(Node * head)
 {
 	//head 泄漏
