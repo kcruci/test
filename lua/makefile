@@ -1,12 +1,13 @@
-all: atest afunc
+all: aluacall aluafun
 
-atest: average_main.cpp;
-	g++ -o atest  average_main.cpp -llua -ldl
+aluacall: lua_call.cpp;
+	g++ -o $@ $< -llua -ldl
 
-afunc: test_luafun.cpp;
+aluafun: lua_fun.cpp;
 	g++ -o $@  $< -llua -ldl
 .PHONY:clean
 clean:
-	rm atest
+	rm alua*
+
 
 

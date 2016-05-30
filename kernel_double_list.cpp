@@ -119,6 +119,10 @@ int main(int argc, const char *argv[])
     {
         list_msg_t* node = LIST_ENTRY(pCurr, list_msg_t, list);
         printf("uiSeq:%d, msg:%s\n", node->uiSeq, node->chMsg);
+
+	//error !!! use safe
+        //LIST_DEL_INIT(pCurr);
+
     }
 
 
@@ -132,6 +136,9 @@ int main(int argc, const char *argv[])
         list_msg_t* node = LIST_ENTRY(pCurr, list_msg_t, list);
         printf("del uiSeq:%d, msg:%s\n", node->uiSeq, node->chMsg);
         LIST_DEL_INIT(pCurr);
+	
+
+        printf("after del uiSeq:%d, msg:%s\n", node->uiSeq, node->chMsg);
     }
 
 
