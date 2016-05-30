@@ -55,8 +55,6 @@ Node * do_recursion(Node * node1, Node * node2)
 	}
 }
 
-//头插方法
-//
 Node * reverse(Node * head)
 {
 	//head 泄漏
@@ -135,10 +133,22 @@ Node * makelink(int count)
 	return head;
 
 }
+void atfun()
+{
+	printf("this is atexit fun \n");
+}
+void onfun(int status,void * arg )
+{
 
+	printf("this is onfun status:%d \n",status);
+	printf("this is onfun arg:%s \n",(char*)arg);
+}
 
 int main(int argc, char * argv[])
 {
+	//on_exit(onfun,(void*)"ssss");
+	atexit(atfun);
+
 	srand(time(NULL));
 	Node * head = makelink(10);
 	print_node(head);
@@ -156,6 +166,8 @@ int main(int argc, char * argv[])
 	Node * mergehead1 = recursion_merge(head1, head2);
 	print_node(mergehead1);
 
+	//exit(1);
+	//_exit(1);
 	return 0;
 
 }
